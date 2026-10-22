@@ -1,0 +1,1 @@
+const menu=document.getElementById('menu');const links=document.getElementById('links');menu.addEventListener('click',()=>links.classList.toggle('show'));document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('show')));
