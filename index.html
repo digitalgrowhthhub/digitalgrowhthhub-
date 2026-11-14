@@ -4,383 +4,567 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Digital Growth Hub - Learn practical digital skills, build confidence and grow your career.">
-  <title>Digital Growth Hub | DG HALLMARK</title>
+  <meta name="description" content="Digital Growth Hub - Learn digital skills, build confidence and grow your future.">
+  <title>Digital Growth Hub | Learn • Practice • Grow</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --navy: #07172e;
+      --navy-light: #102b4e;
+      --gold: #d9ad55;
+      --gold-light: #f4d995;
+      --white: #ffffff;
+      --light: #f5f7fb;
+      --text: #26364a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+    }
+    a { text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+    .section { padding: 75px 0; }
+    .section-title { text-align: center; margin-bottom: 38px; }
+    .section-title h2 { color: var(--navy); font-size: 34px; margin-bottom: 10px; }
+    .section-title p { color: #68778a; }
+
+    .header {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 15px #0002;
+    }
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      color: var(--gold-light);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      list-style: none;
+    }
+    .nav-links a { color: white; font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .menu-btn {
+      display: none;
+      color: white;
+      background: transparent;
+      border: 0;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #07172e, #15385e);
+      color: white;
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 45px;
+    }
+    .eyebrow {
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.12;
+      margin: 18px 0;
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-text p { color: #e1e8f1; max-width: 570px; font-size: 17px; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .btn {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 7px;
+      font-weight: 700;
+      transition: .2s;
+      text-align: center;
+    }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--gold); color: white; }
+    .btn-outline:hover { background: var(--gold); color: var(--navy); }
+    .hero-note { margin-top: 25px; color: #d5dfeb; font-size: 13px; }
+    .hero-image img {
+      width: 100%;
+      max-height: 390px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 3px solid #d9ad5570;
+      box-shadow: 0 15px 45px #0005;
+    }
+
+    .identity { background: var(--light); }
+    .identity-card {
+      background: var(--navy);
+      color: white;
+      padding: 38px;
+      border-radius: 15px;
+      text-align: center;
+      border-bottom: 5px solid var(--gold);
+    }
+    .identity-card h2 { color: var(--gold-light); margin-bottom: 12px; font-size: 30px; }
+    .identity-card p { max-width: 800px; margin: auto; color: #e3eaf3; }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .course-card {
+      background: white;
+      border: 1px solid #e4e9f0;
+      border-radius: 13px;
+      padding: 25px;
+      box-shadow: 0 7px 25px #0b23400c;
+    }
+    .course-card h3 { color: var(--navy); margin-bottom: 10px; font-size: 20px; }
+    .course-card p { color: #68778a; font-size: 14px; }
+    .course-card ul { padding-left: 19px; margin: 14px 0; color: #526176; font-size: 14px; }
+    .course-card.featured { border: 2px solid var(--gold); background: #fffdf8; }
+    .price { color: var(--navy); font-size: 28px; font-weight: 800; margin: 12px 0 3px; }
+    .duration { color: #8a6a2e; font-size: 13px; font-weight: 700; }
+
+    .combo {
+      background: var(--navy);
+      color: white;
+    }
+    .combo .section-title h2 { color: white; }
+    .combo .section-title p { color: #d5dfeb; }
+    .combo-card {
+      max-width: 760px;
+      margin: auto;
+      padding: 35px;
+      border: 1px solid var(--gold);
+      border-radius: 16px;
+      background: #102644;
+    }
+    .combo-card h3 { color: var(--gold-light); font-size: 27px; }
+    .combo-card .price { color: var(--gold-light); font-size: 40px; }
+    .combo-card ul { padding-left: 20px; margin: 20px 0; color: #e5ebf3; }
+    .combo-card li { margin: 7px 0; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 38px;
+      align-items: center;
+    }
+    .mentor-image img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .about-copy h2 { color: var(--navy); font-size: 32px; margin-bottom: 15px; }
+    .about-copy p { margin-bottom: 13px; color: #58677a; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .step {
+      padding: 25px;
+      border-radius: 12px;
+      background: var(--light);
+      text-align: center;
+    }
+    .step strong { color: #9a742e; font-size: 25px; display: block; margin-bottom: 8px; }
+    .step h3 { color: var(--navy); margin-bottom: 7px; }
+
+    .register { background: var(--light); }
+    .register-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 32px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px #0b234010;
+      text-align: center;
+    }
+    .register-box h3 { color: var(--navy); font-size: 25px; margin-bottom: 10px; }
+    .register-box p { color: #64748b; margin-bottom: 20px; }
+    .form-frame {
+      width: 100%;
+      height: 650px;
+      border: 1px solid #e1e6ee;
+      border-radius: 10px;
+      margin-top: 25px;
+    }
+
+    .contact { background: white; text-align: center; }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .contact-links a {
+      color: var(--navy);
+      border: 1px solid var(--gold);
+      padding: 11px 18px;
+      border-radius: 7px;
+      font-weight: 700;
+    }
+    .contact-links a:hover { background: var(--navy); color: white; }
+
+    footer {
+      background: #041124;
+      color: #d5dfeb;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 14px;
+    }
+    footer strong { color: var(--gold-light); }
+
+    @media (max-width: 800px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links.show { display: flex; }
+      .hero-content, .about-grid { grid-template-columns: 1fr; }
+      .hero { padding: 65px 0; }
+      .hero-image { max-width: 550px; }
+      .course-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .section { padding: 55px 0; }
+      .course-grid { grid-template-columns: 1fr; }
+      .section-title h2 { font-size: 28px; }
+      .identity-card, .combo-card, .register-box { padding: 24px 19px; }
+      .logo { font-size: 18px; }
+      .form-frame { height: 700px; }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <nav class="navbar container">
-      <a href="#home" class="logo">
-        <span class="logo-mark">DG</span>
-        <span> DIGITAL GROWTH HUB</span>
-      </a>
+<header class="header">
+  <nav class="navbar container">
+    <a href="#home" class="logo">Digital Growth Hub</a>
+    <button class="menu-btn" id="menu" aria-label="Open navigation menu">☰</button>
+    <ul class="nav-links" id="links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#hallmark">Our Identity</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-      <button class="menu-btn" id="menu" aria-label="Open navigation menu">
-        ☰
-      </button>
+<main>
 
-      <ul class="nav-links" id="links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#hallmark">DG Hallmark</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#register">Register</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- Hero Section -->
-    <section class="hero section" id="home">
-      <div class="container hero-content">
-        <div class="hero-text">
-          <span class="eyebrow">LEARN • PRACTICE • GROW</span>
-          <h1>Learn Digital Skills.<br>
-            <span>Build Your Future.</span>
-          </h1>
-          <p>
-            Develop practical digital skills, improve your communication
-            and prepare yourself for new opportunities in the digital world.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#courses" class="btn btn-primary">Explore Courses</a>
-            <a href="#register" class="btn btn-outline">Register Now</a>
-          </div>
-
-          <div class="hero-note">
-            Practical Learning | Skill Development | Community Support
-          </div>
+  <section class="hero section" id="home">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="eyebrow">LEARN • PRACTICE • GROW</span>
+        <h1>Learn Digital Skills.<br><span>Build Your Future.</span></h1>
+        <p>
+          Develop practical digital skills, improve your communication
+          and prepare yourself for new opportunities in the digital world.
+        </p>
+        <div class="hero-buttons">
+          <a href="#courses" class="btn btn-primary">Explore Courses</a>
+          <a href="#register" class="btn btn-outline">Register Now</a>
         </div>
-
-        <div class="hero-image">
-          <img src="assets/hero.png" alt="Digital Growth Hub learning">
-        </div>
+        <div class="hero-note">Practical Learning | Skill Development | Community Support</div>
       </div>
-    </section>
-
-    <!-- Brand Identity -->
-    <section class="hallmark section" id="hallmark">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">OUR IDENTITY</span>
-          <h2>Introducing <span>DG HALLMARK</span></h2>
-          <p>
-            A commitment to practical learning, personal development
-            and responsible digital growth.
-          </p>
-        </div>
-
-        <div class="hallmark-grid">
-          <div class="hallmark-card">
-            <h3>Learn with Purpose</h3>
-            <p>Focus on skills that can be practised in real-world situations.</p>
-          </div>
-          <div class="hallmark-card">
-            <h3>Grow with Confidence</h3>
-            <p>Build communication, creativity and professional confidence.</p>
-          </div>
-          <div class="hallmark-card">
-            <h3>Stay Future Ready</h3>
-            <p>Understand digital tools and keep learning as technology evolves.</p>
-          </div>
-        </div>
+      <div class="hero-image">
+        <img src="assets/hero.png" alt="Digital Growth Hub learning">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Courses -->
-    <section class="courses section" id="courses">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">WHAT YOU CAN LEARN</span>
-          <h2>Explore Our Courses</h2>
-          <p>Start with the basics and move towards practical skill development.</p>
-        </div>
-
-        <div class="course-category">
-          <h3>Free Learning</h3>
-          <div class="course-grid">
-            <article class="course-card">
-              <span class="course-tag">FREE</span>
-              <h3>Basic of Digital Marketing</h3>
-              <p>
-                Get introduced to digital marketing, its evolution,
-                major platforms and its importance today.
-              </p>
-              <a href="#register" class="text-link">Get Started →</a>
-            </article>
-          </div>
-          <p class="small-note">
-            Introductory learning sessions. Advanced practical training
-            is part of the paid programmes.
-          </p>
-        </div>
-
-        <div class="course-category">
-          <h3>Complete Combo Programme</h3>
-
-          <div class="combo-card">
-            <div class="combo-info">
-              <span class="course-tag">120 DAYS PROGRAMME</span>
-              <h3>Digital Growth Hub – Complete Combo</h3>
-              <p>
-                A structured learning programme covering digital skills,
-                communication, content creation and personal development.
-              </p>
-
-              <ul class="feature-list">
-                <li>Digital Marketing Fundamentals</li>
-                <li>Social Media Marketing</li>
-                <li>Instagram Growth & Personal Branding</li>
-                <li>Content Creation & Video Editing</li>
-                <li>Canva Designing</li>
-                <li>AI Tools & Prompt Engineering</li>
-                <li>Meta Ads Fundamentals</li>
-                <li>Sales & Communication Skills</li>
-                <li>Photography Basics</li>
-                <li>Time Management & Personality Development</li>
-                <li>Trading / Forex – Optional learning module</li>
-              </ul>
-
-              <p class="disclaimer">
-                Course modules are for education and skill development.
-                Trading and Forex involve financial risk and are not
-                guaranteed income opportunities.
-              </p>
-            </div>
-
-            <div class="combo-price">
-              <span class="price-label">Complete Combo Fee</span>
-              <div class="price">₹9,999</div>
-              <p>Duration: 120 Days</p>
-              <a href="#register" class="btn btn-primary">Register Now</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="course-category">
-          <h3>Individual Skill Modules</h3>
-          <div class="course-grid">
-            <article class="course-card">
-              <h3>Social Media Marketing</h3>
-              <p>Learn the fundamentals of social media strategy and marketing.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>Instagram Growth</h3>
-              <p>Understand content strategy, audience building and engagement.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>Content Creation</h3>
-              <p>Learn to plan and create useful digital content.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>Video Editing</h3>
-              <p>Explore editing basics for social media and digital platforms.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>Canva Designing</h3>
-              <p>Create designs and visual content using Canva.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>AI Tools & Prompt Engineering</h3>
-              <p>Learn how to use AI tools effectively for everyday tasks.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>Sales & Communication</h3>
-              <p>Develop communication, presentation and sales fundamentals.</p>
-              <span class="coming-soon">Details Coming Soon</span>
-            </article>
-
-            <article class="course-card">
-              <h3>Spoken English</h3>
-              <p>Build confidence in everyday English communication.</p>
-              <span class="coming-soon">Coming Soon</span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="about section" id="about">
-      <div class="container about-content">
-        <div class="about-image">
-          <img src="assets/mentor.png" alt="Digital Growth Hub mentor">
-        </div>
-
-        <div class="about-text">
-          <span class="eyebrow">ABOUT DIGITAL GROWTH HUB</span>
-          <h2>Learn Skills. Build Confidence. Create Opportunities.</h2>
-          <p>
-            Digital Growth Hub is a digital skills learning community
-            focused on practical knowledge, personal development and
-            understanding the opportunities of the digital world.
-          </p>
-          <p>
-            Our goal is to help learners understand useful tools,
-            practise new skills and become more confident in their journey.
-          </p>
-          <a href="#register" class="btn btn-primary">Join Our Community</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Learning Journey -->
-    <section class="journey section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">YOUR LEARNING JOURNEY</span>
-          <h2>120 Days of Structured Learning</h2>
-          <p>A guided programme with learning, practice and improvement.</p>
-        </div>
-
-        <div class="journey-grid">
-          <div class="journey-card">
-            <span>01</span>
-            <h3>Days 1–30</h3>
-            <p>Digital fundamentals, communication and essential tools.</p>
-          </div>
-          <div class="journey-card">
-            <span>02</span>
-            <h3>Days 31–60</h3>
-            <p>Social media, content creation, Canva and video editing.</p>
-          </div>
-          <div class="journey-card">
-            <span>03</span>
-            <h3>Days 61–90</h3>
-            <p>Personal branding, AI tools, marketing and sales fundamentals.</p>
-          </div>
-          <div class="journey-card">
-            <span>04</span>
-            <h3>Days 91–120</h3>
-            <p>Practical projects, revision and skill development activities.</p>
-          </div>
-        </div>
-        <p class="small-note">
-          Module sequence and session schedule may be updated by the academy.
+  <section class="section identity" id="hallmark">
+    <div class="container">
+      <div class="identity-card">
+        <h2>Welcome to Digital Growth Hub</h2>
+        <p>
+          A skill-development platform focused on helping learners understand
+          the digital world, develop practical abilities and build confidence
+          through structured learning and community support.
         </p>
       </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">LEARNER EXPERIENCES</span>
-          <h2>Real Stories. Real Learning.</h2>
-          <p>
-            We will feature genuine learner experiences here after
-            receiving their permission.
-          </p>
-        </div>
-
-        <div class="testimonial-placeholder">
-          <h3>Student Testimonials Coming Soon</h3>
-          <p>
-            Our learners will share what they learned, how they practised
-            and how the community supported their learning journey.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Registration -->
-    <section class="register section" id="register">
-      <div class="container register-content">
-        <div class="section-heading">
-          <span class="eyebrow">TAKE YOUR FIRST STEP</span>
-          <h2>Register with Digital Growth Hub</h2>
-          <p>
-            Submit your details through our registration form.
-            Our team can guide you about the programme and next steps.
-          </p>
-          <a
-            href="https://forms.gle/5rKdiSqB9xKqUAAx6"
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Register Now
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Student Login -->
-    <section class="student-login section">
-      <div class="container">
-        <div class="login-card">
-          <span class="eyebrow">STUDENT PORTAL</span>
-          <h2>Student Login</h2>
-          <p>
-            Student dashboard and login facilities are under development.
-          </p>
-          <span class="coming-soon">Coming Soon</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact section" id="contact">
-      <div class="container contact-content">
-        <div>
-          <span class="eyebrow">GET IN TOUCH</span>
-          <h2>Have Questions?</h2>
-          <p>Contact our team to know more about courses and registration.</p>
-        </div>
-
-        <div class="contact-details">
-          <p><strong>WhatsApp:</strong> +91 90651 10355</p>
-          <a
-            href="https://wa.me/919065110355?text=Hello%20Digital%20Growth%20Hub%2C%20I%20want%20to%20know%20about%20your%20courses."
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Chat on WhatsApp
-          </a>
-
-          <p>
-            <strong>Instagram:</strong>
-            <a
-              href="https://www.instagram.com/digitalgrowthhub.in01/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >@digitalgrowthhub.in01</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <h3>DG HALLMARK</h3>
-      <p>Digital Growth Hub | Learn • Practice • Grow</p>
-      <p>© 2026 Digital Growth Hub. All Rights Reserved.</p>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <section class="section" id="courses">
+    <div class="container">
+      <div class="section-title">
+        <h2>Explore Our Courses</h2>
+        <p>Learn useful skills for your personal and professional growth.</p>
+      </div>
+
+      <div class="course-grid">
+        <article class="course-card">
+          <h3>Free Digital Marketing Basics</h3>
+          <p>Start with an introduction to digital marketing and understand its importance.</p>
+          <ul>
+            <li>What is Digital Marketing?</li>
+            <li>Introduction to online platforms</li>
+            <li>Career and learning opportunities</li>
+            <li>Introductory learning sessions</li>
+          </ul>
+          <div class="price">FREE</div>
+          <a href="#register" class="btn btn-primary">Get Started</a>
+        </article>
+
+        <article class="course-card featured">
+          <h3>Digital Growth Hub Complete Combo</h3>
+          <p>A structured learning program for developing multiple digital and professional skills.</p>
+          <ul>
+            <li>Digital Marketing</li>
+            <li>Social Media Marketing</li>
+            <li>Content Creation & Video Editing</li>
+            <li>Canva and Personal Branding</li>
+            <li>AI Tools & Prompt Engineering</li>
+            <li>Sales, Communication & Confidence</li>
+            <li>Trading/Forex – Optional learning module</li>
+          </ul>
+          <div class="price">₹9,999</div>
+          <div class="duration">120 Days Learning Program</div>
+          <br>
+          <a href="#register" class="btn btn-primary">Register Now</a>
+        </article>
+
+        <article class="course-card">
+          <h3>Digital Marketing Masterclass</h3>
+          <p>Understand the fundamentals and practical applications of digital marketing.</p>
+          <ul>
+            <li>Digital marketing fundamentals</li>
+            <li>Social media strategy</li>
+            <li>Content planning</li>
+            <li>Introduction to advertising</li>
+          </ul>
+          <a href="#register" class="btn btn-primary">Enquire Now</a>
+        </article>
+
+        <article class="course-card">
+          <h3>Social Media Growth</h3>
+          <p>Learn how to build a consistent and professional social media presence.</p>
+          <ul>
+            <li>Instagram and Facebook basics</li>
+            <li>Content strategy</li>
+            <li>Audience engagement</li>
+            <li>Personal branding</li>
+          </ul>
+          <a href="#register" class="btn btn-primary">Enquire Now</a>
+        </article>
+
+        <article class="course-card">
+          <h3>AI Tools & Productivity</h3>
+          <p>Explore AI tools that can support learning, creativity and productivity.</p>
+          <ul>
+            <li>ChatGPT fundamentals</li>
+            <li>Prompt writing</li>
+            <li>AI content assistance</li>
+            <li>Productivity workflows</li>
+          </ul>
+          <a href="#register" class="btn btn-primary">Enquire Now</a>
+        </article>
+
+        <article class="course-card">
+          <h3>Communication & Personality</h3>
+          <p>Build confidence and improve your communication for everyday and professional life.</p>
+          <ul>
+            <li>Communication skills</li>
+            <li>Presentation basics</li>
+            <li>Sales fundamentals</li>
+            <li>Spoken English introduction</li>
+          </ul>
+          <a href="#register" class="btn btn-primary">Enquire Now</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section combo">
+    <div class="container">
+      <div class="section-title">
+        <h2>Complete Combo Package</h2>
+        <p>One structured program to explore multiple skill areas.</p>
+      </div>
+      <div class="combo-card">
+        <h3>Digital Growth Hub – Complete Combo</h3>
+        <div class="price">₹9,999</div>
+        <p>Program duration: 120 Days</p>
+        <ul>
+          <li>Digital Marketing & Social Media Marketing</li>
+          <li>Content Creation, Photography & Video Editing</li>
+          <li>Canva, Personal Branding & AI Tools</li>
+          <li>Sales Skills, Communication & Time Management</li>
+          <li>Practical learning activities and community support</li>
+          <li>Trading/Forex module is optional</li>
+        </ul>
+        <a href="#register" class="btn btn-primary">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="mentor-image">
+        <img src="assets/mentor.png" alt="Digital Growth Hub mentor">
+      </div>
+      <div class="about-copy">
+        <h2>About Digital Growth Hub</h2>
+        <p>
+          Digital Growth Hub is focused on digital education, practical skill
+          development and personal growth.
+        </p>
+        <p>
+          Our learning approach brings together digital marketing, content
+          creation, communication, AI tools and other useful skills.
+        </p>
+        <p>
+          Our goal is to help learners become more confident, informed and
+          prepared to explore opportunities in a changing digital environment.
+        </p>
+        <a href="#register" class="btn btn-primary">Join Our Learning Community</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section identity">
+    <div class="container">
+      <div class="section-title">
+        <h2>How to Get Started</h2>
+        <p>Take your first step towards learning new skills.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <strong>01</strong>
+          <h3>Register</h3>
+          <p>Submit your details through our registration form.</p>
+        </div>
+        <div class="step">
+          <strong>02</strong>
+          <h3>Connect</h3>
+          <p>Our team will contact you with program information.</p>
+        </div>
+        <div class="step">
+          <strong>03</strong>
+          <h3>Start Learning</h3>
+          <p>Understand the learning structure and begin your journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section register" id="register">
+    <div class="container">
+      <div class="section-title">
+        <h2>Student Registration</h2>
+        <p>Take the first step towards your digital learning journey.</p>
+      </div>
+
+      <div class="register-box">
+        <h3>Register Now</h3>
+        <p>
+          Fill out the registration form. Our team will connect with you
+          to share the next steps and course details.
+        </p>
+        <a class="btn btn-primary"
+           href="https://forms.gle/5rKdiSqB9xKqUAAx6"
+           target="_blank" rel="noopener">
+          Open Registration Form
+        </a>
+
+        <iframe
+          class="form-frame"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSc_PLACEHOLDER/viewform?embedded=true"
+          title="Student Registration Form"
+          loading="lazy">
+          Loading…
+        </iframe>
+        <p style="font-size:13px; margin-top:12px;">
+          If the form does not load here, use the Open Registration Form button above.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Connect With Us</h2>
+        <p>Have questions? Contact Digital Growth Hub.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://wa.me/919065110355?text=Hello%20Digital%20Growth%20Hub%2C%20I%20want%20to%20know%20about%20your%20courses."
+           target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="https://www.instagram.com/digitalgrowthhub.in01/"
+           target="_blank" rel="noopener">Instagram</a>
+        <a href="https://forms.gle/5rKdiSqB9xKqUAAx6"
+           target="_blank" rel="noopener">Register</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>Digital Growth Hub</strong></p>
+  <p>Learn • Practice • Grow</p>
+  <p>© 2026 Digital Growth Hub. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const menuButton = document.getElementById('menu');
+  const navLinks = document.getElementById('links');
+
+  if (menuButton && navLinks) {
+    menuButton.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('#links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('show'));
+    });
+  }
+</script>
+
 </body>
 </html>
